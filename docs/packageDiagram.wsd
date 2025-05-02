@@ -1,0 +1,38 @@
+@startuml PackageDiagram
+
+package "DartsAssistant" {
+    package "Models" {
+        class GameManager
+        class Player
+        class GameMode
+        class ESectorType
+        class EGameMode
+    }
+    
+    package "Views" {
+        class MainWindow
+        class GameWindow
+        class PlayerListWindow
+        class CheckoutTableWindow
+        class StatisticsWindow
+        class LoadGameWindow
+    }
+    
+    package "ViewModels" {
+        class ViewModel
+    }
+
+    package "Persistence" {
+        class IFileManager
+        class FileManager
+        class FileLoadingException
+        class FileSavingException
+    }
+    
+    ' Relationships between packages
+    ViewModels <-- Models
+    Views <-- ViewModels
+    Models <-- Persistence
+}
+
+@enduml

@@ -1,0 +1,43 @@
+@startuml UseCaseDiagram
+
+title Darts Assistant Use Case Diagram
+
+actor User as U
+
+    usecase "Add Player" as UC0
+    usecase "Set Game Mode" as UC1
+    usecase "Add Bot" as UC2
+    usecase "Set Bot Difficulty" as UC3
+    usecase "Start Game" as UC4
+    usecase "Track Score" as UC5
+    usecase "Track Throws" as UC6
+    usecase "Check Statistics" as UC7
+    usecase "Check Checkout Table" as UC8
+    usecase "Save Game" as UC9
+    usecase "Load Game" as UC10
+    usecase "Check Game History" as UC11
+    usecase "End Game" as UC13
+
+' User interactions
+U --> UC0 : "Add Player"
+U --> UC1 : "Set Game Mode"
+U --> UC2 : "Add Bot"
+U --> UC3 : "Set Bot Difficulty"
+U --> UC4 : "Start Game"
+U --> UC5 : "Track Score"
+U --> UC6 : "Track Throws"
+U --> UC7 : "Check Statistics"
+U --> UC8 : "Check Checkout Table"
+U --> UC9 : "Save Game"
+U --> UC10 : "Load Game"
+U --> UC11 : "Check Game History"
+U --> UC13 : "End Game"
+
+' Logical precedences
+UC0 --> UC4 : <<precedes>>
+UC1 --> UC4 : <<precedes>>
+UC2 --> UC4 : <<precedes>>
+UC3 --> UC4 : <<precedes>>
+UC4 --> UC13 : <<precedes>>
+
+@enduml

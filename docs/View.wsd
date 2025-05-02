@@ -1,0 +1,10 @@
+@startuml View
+
+'Relationships
+MainWindow <|-- GameWindow
+MainWindow <|-- PlayerListWindow
+MainWindow <|-- CheckoutTableWindow
+MainWindow <|-- StatisticsWindow
+MainWindow <|-- LoadGameWindow
+
+@enduml

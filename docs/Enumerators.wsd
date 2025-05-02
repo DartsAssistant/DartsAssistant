@@ -1,0 +1,18 @@
+@startuml Enumerators
+
+enum ESectorType {
+    Single,
+    Double,
+    Triple,
+    Bullseye
+}
+
+enum EGameMode {
+    Game301,
+    Game501,
+    Game701,
+    Cricket,
+    AroundTheWorld
+}
+
+@enduml

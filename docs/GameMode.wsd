@@ -1,0 +1,11 @@
+@startuml GameMode
+class GameMode {
+    + ModeType : EGameMode;
+    + StartingScore: int;
+    + CheckOut : ESectorType;
+    + GameMode(mode: EGameMode, checkout: ESectorType)
+    + IsWinningConditionMet(score: int, throws : List<int>) : bool
+    - getStartingScore() : int
+    - IsValidCheckout(points: int, requiredSector: ESectorType) : bool
+}
+@enduml

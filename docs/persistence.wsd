@@ -1,0 +1,29 @@
+@startuml Persistence
+
+interface IFileManager {
+    + LoadGame(filePath: string) : GameManager
+    + SaveGame(filePath: string, gameManager: GameManager) : void
+}
+
+class FileManager {
+    - filePath : string
+    + LoadGame(filePath: string) : GameManager
+    + SaveGame(filePath: string, gameManager: GameManager) : void
+}
+
+class FileLoadingException {
+    - message : string
+    + FileLoadingException(message: string)
+}
+
+class FileSavingException {
+    - message : string
+    + FileSavingException(message: string)
+}
+
+' relationships 
+IFileManager <|.. FileManager : implements
+FileManager ..> FileLoadingException : uses
+FileManager ..> FileSavingException : uses
+
+@enduml

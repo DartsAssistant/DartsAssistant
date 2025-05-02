@@ -1,0 +1,69 @@
+@startuml Model
+
+class Player {
+    - name : string;
+    - score : int;
+    - throws : List<int>;
+    - avarage : double;
+    - first9Avarage : double;
+    + Name : string;
+    + Score : int;
+    + Throws : List<int>;
+    + Avarage : double;
+    + First9Avarage : double;
+    + Player(name: string, score: int)
+    + Throw(points: int) : void
+    + RegisterThrow(points: int) : void
+}
+
+class GameMode {
+    + ModeType : EGameMode;
+    + StartingScore: int;
+    + CheckOut : ESectorType;
+    + GameMode(mode: EGameMode, checkout: ESectorType)
+    + IsWinningConditionMet(score: int, throws : List<int>) : bool
+    - getStartingScore() : int
+    - IsValidCheckout(points: int, requiredSector: ESectorType) : bool
+}
+
+class GameManager {
+    - players : List<Player>;
+    - gameMode : GameMode;
+    - currentPlayer : Player;
+    - currentThrows : List<int>;
+    + Players : List<Player>;
+    + GameMode : GameMode;
+    + CurrentPlayer : Player;
+    + CurrentThrows : List<int>;
+    + GameManager(gameMode: GameMode)
+    + AddPlayer(player: Player) : void
+    + StartGame(gameMode: GameMode, checkout: ESectorType) : void
+    + NextThrow(points: int) : void
+    + NextPlayer() : void
+    + EndGame() : void
+}
+
+enum ESectorType {
+    Single,
+    Double,
+    Triple,
+    Bullseye
+}
+
+enum EGameMode {
+    Game301,
+    Game501,
+    Game701,
+    Cricket,
+    AroundTheWorld
+}
+
+' Relationships
+GameManager <-- Player : manages
+GameManager --> GameMode : uses
+GameMode --> ESectorType : uses
+GameMode --> EGameMode : uses
+GameManager <-- ESectorType : uses
+GameManager <-- EGameMode : uses
+
+@enduml

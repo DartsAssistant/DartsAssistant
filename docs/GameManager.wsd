@@ -1,0 +1,19 @@
+@startuml GameManager
+class GameManager {
+    - players : List<Player>;
+    - gameMode : GameMode;
+    - currentPlayer : Player;
+    - currentThrows : List<int>;
+    + Players : List<Player>;
+    + GameMode : GameMode;
+    + CurrentPlayer : Player;
+    + CurrentThrows : List<int>;
+    + GameManager(gameMode: GameMode)
+    + AddPlayer(player: Player) : void
+    + StartGame(gameMode: GameMode, checkout: ESectorType) : void
+    + NextThrow(points: int) : void
+    + NextPlayer() : void
+    + EndGame() : void
+}
+
+@enduml

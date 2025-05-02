@@ -1,0 +1,19 @@
+@startuml Player
+
+class Player {
+    - name : string;
+    - score : int;
+    - throws : List<int>;
+    - avarage : double;
+    - first9Avarage : double;
+    + Name : string;
+    + Score : int;
+    + Throws : List<int>;
+    + Avarage : double;
+    + First9Avarage : double;
+    + Player(name: string, score: int)
+    + Throw(points: int) : void
+    + RegisterThrow(points: int) : void
+}
+
+@enduml

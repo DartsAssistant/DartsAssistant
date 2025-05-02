@@ -1,0 +1,22 @@
+@startuml ViewModel
+
+class ViewModel {
+    - gameManager : GameManager;
+    + ViewModel(gameManager: GameManager)
+    + ViewStatistics() : void
+    + ViewPlayerList() : void
+    + ViewCheckoutTable() : void
+    + ViewLoadGame() : void
+    + ViewGameWindow() : void
+    + AddPlayer(player: Player) : void
+    + StartGame(gameMode: GameMode, checkout: ESectorType) : void
+    + NextThrow(points: int) : void
+    + NextPlayer() : void
+    + EndGame() : void
+    + SaveGame(fileName: string) : void
+    + LoadGame(fileName: string) : void
+    + ViewGameHistory() : void
+    + RefreshGame() : void
+}
+
+@enduml

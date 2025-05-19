@@ -11,12 +11,10 @@ namespace DartsAssistant.Models
         private List<Player> _players;
         private GameMode _gameMode;
         private Player _currentPlayer;
-        private List<int> _currentThrows;
 
         public List<Player> Players => _players;
         public GameMode GameMode => _gameMode;
         public Player CurrentPlayer => _currentPlayer;
-        public List<int> CurrentThrows => _currentThrows;
         public GameManager(List<Player> players, GameMode gameMode)
         {
             _players = players;
@@ -59,14 +57,14 @@ namespace DartsAssistant.Models
             if (_currentPlayer != null)
             {
                 _currentPlayer.Throw(points);
-                _currentThrows.Add(points);
+                _currentPlayer.CurrentThrows.Add(points);
                 // Check if the player has won
-                if (_gameMode.IsWinningConditionMet(_currentPlayer.Score, _currentThrows))
+                if (_gameMode.IsWinningConditionMet(_currentPlayer.Score, _currentPlayer.CurrentThrows))
                 {
                     EndGame();
                 }
 
-                if (_currentThrows.Count == 3)
+                if (_currentPlayer.CurrentThrows.Count == 3)
                 {
 
                     NextPlayer();
@@ -86,7 +84,7 @@ namespace DartsAssistant.Models
             {
                 _currentPlayer = _players[0];
             }
-            _currentThrows.Clear();
+            _currentPlayer.CurrentThrows.Clear();
         }
 
         /// <summary>

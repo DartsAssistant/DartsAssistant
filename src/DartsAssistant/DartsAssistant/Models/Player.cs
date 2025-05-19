@@ -11,11 +11,13 @@ namespace DartsAssistant.Models
         private string _name;
         private int _score;
         private List<int> _throws;
+        private List<int> _currentThrows;
         private double _average;
         private double _first9Average;
         public string Name => _name;
         public int Score => _score;
         public List<int> Throws => _throws;
+        public List<int> CurrentThrows => _currentThrows;
         public double Average => _average;
         public double First9Average => _first9Average;
 

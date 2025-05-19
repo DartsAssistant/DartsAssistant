@@ -76,7 +76,7 @@ namespace DartsAssistant.Models
                         int lastThrow = throws[^1]; // The last throw
 
                         // Check if the last throw satisfies the Checkout requirement
-                        return IsValidCheckout(lastThrow, Checkout);
+                        return IsValidCheckout(lastThrow);
                     }
                 }
             }
@@ -108,10 +108,10 @@ namespace DartsAssistant.Models
         /// - Single: Any points are acceptable.
         /// False otherwise.
         /// </returns>
-        private bool IsValidCheckout(int points, ESectorType requiredSector)
+        public bool IsValidCheckout(int points)
         {
             // Assume a simple example: the points and sector must match
-            switch (requiredSector)
+            switch (Checkout)
             {
                 case ESectorType.Double:
                     return points % 2 == 0; // The points must be even
@@ -126,6 +126,36 @@ namespace DartsAssistant.Models
                 default:
                     return true; // Any points are acceptable for the Single sector
             }
+        }
+
+
+        public int RegisterThrows(Player player)
+        {
+            if(ModeType != EGameMode.Cricket)
+            {
+                int totalScore = 0;
+                foreach (var throwScore in player.Throws)
+                {
+                    totalScore += throwScore;
+                }
+
+                
+                player.RegisterThrows(totalScore);
+                return player.Score - totalScore;
+            }
+            else
+            {
+                int totalScore = player.Score;
+                foreach (var throwScore in player.Throws)
+                {
+                    totalScore += throwScore;
+                }
+                player.RegisterThrows(totalScore);
+                return totalScore;
+            }
+
+            
+            
         }
     }
 }
